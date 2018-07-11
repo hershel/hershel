@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "prettier ./**/*.{js,ts,json,md} -l",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,6 +25,8 @@
   },
   "homepage": "https://github.com/hershel/hershel#readme",
   "devDependencies": {
-    "prettier": "^1.13.7"
+    "@types/node": "^10.5.2",
+    "prettier": "^1.13.7",
+    "typescript": "^2.9.2"
   }
 }
