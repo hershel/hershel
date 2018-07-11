@@ -1,0 +1,25 @@
+{
+  "name": "hershel",
+  "version": "0.0.0-development",
+  "description": "🤖 Modular and minimal Discord bot framework for Node.js",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hershel/hershel.git"
+  },
+  "keywords": [
+    "discord.js",
+    "framework",
+    "discord",
+    "bot"
+  ],
+  "author": "HelloEdit (https://github.com/HelloEdit)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hershel/hershel/issues"
+  },
+  "homepage": "https://github.com/hershel/hershel#readme"
+}
