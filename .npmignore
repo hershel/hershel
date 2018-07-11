@@ -1,0 +1,11 @@
+media/
+src/
+test/
+.nyc_output/
+ava.config.js
+tsconfig.json
+.npmignore
+.nycrc
+.prettierignore
+.prettierignore
+.travis.yml
