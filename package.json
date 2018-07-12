@@ -3,6 +3,7 @@
   "version": "0.0.0-development",
   "description": "🤖 Modular and minimal Discord bot framework for Node.js",
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "lint": "prettier ./**/*.{js,ts,json,md} -l",
     "build": "tsc",
