@@ -1,0 +1,32 @@
+language: node_js
+
+node_js:
+  - 10
+  - 9
+  - 8
+
+notifications:
+  email: false
+
+cache:
+  directories:
+    - ~/.npm
+
+script:
+  - npm run build -- --noEmit
+  - npm run test
+  - npm run coverage
+
+branches:
+  only:
+    - master
+    - dev
+    - /^greenkeeper.*$/
+    
+# jobs:
+#   include:
+#     - stage: deploy
+#       if: branch = master
+#       script:
+#         - npm run build
+#         - npm run release
