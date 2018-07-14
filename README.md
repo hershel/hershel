@@ -9,6 +9,10 @@
 </p>
 
 <p align="center">
+  <a href="https://www.npmjs.com/package/hershel">
+    <img alt="Hershel on npm" 
+    src="https://img.shields.io/npm/v/hershel.svg">
+  </a>
   <a href="https://travis-ci.com/hershel/hershel">
     <img alt="Travis CI" 
     src="https://travis-ci.com/hershel/hershel.svg?branch=master">
@@ -33,15 +37,13 @@
 
 Hershel is a small, highly modular Discord bots framework based on the fact that you don't need to embed unnecessary features / code in your bot project. Hershel allows you to write your own message processing logic or to use the packages at your disposal to build an awesome Discord bot.
 
-### Install
+## Install
 
 ```
 npm i hershel
 ```
 
-### Exemple
-
-Let's code a simple parrot bot:
+## Example
 
 ```js
 const { Client } = require('hershel')
@@ -50,41 +52,24 @@ const { Client } = require('hershel')
 const bot = new Client()
 
 // each message will go through this function
-bot.use(({ message, createReply }) => {
+bot.use(({ message, createReply }, next) => {
   if (message.author.bot) return
 
   // use Hershel's reply API
   const response = createReply()
 
   response
-    // set the type of the reply. Can be string or embed (default)
-    .setType('string')
+    .setType('string') // set the reply type, wich can be string or embed (default)
     .setMessage(message.content)
     .send()
-})
-
-bot.login(process.env.TOKEN)
-```
-
-That is. Really.
-
-You can chain middlewares this way:
-
-```js
-const { Client } = require('hershel')
-
-const bot = new Client({
-  logger: true // enable logger. Without this, logger is an abstraction-noop
-})
-
-bot.use(({ message, createReply, log }, next) => {
-  log.info(message.content, 'new message')
 
   next() // call next middleware
 })
 
+// Middlewares can be async too
 bot.use(async ({ message, id }) => {
-  // can be async too!
+  // assert.strictEqual(message.id, id)
+
   myPrivacyFriendlyDataAnalysisService(message, { idOfTheProcess: id })
 })
 
@@ -94,16 +79,27 @@ bot.use(async ({ message, id }) => {
 bot.login(process.env.TOKEN)
 ```
 
+That is. Really.
+
 Hershel was thought to be able to make your bot what you want by giving a solid base: you can create a bot streaming music, interactive or just displaying your latest git commits, and this simply, without magic or complexity.
 
-### Features
+## Features
 
 - **Modular:** Hershel supports plugin and decorator to make it extremely modular and extensible.
 - **Logging:** We all like clean and clear logs. We use [Pino](https://github.com/pinojs/pino), a super fast, json logger.
 - **Fast:** No more useless feature loading you don't use.
 
-### Thanks
+## Related
+
+- [hershel/dispatcher](https://github.com/hershel/dispatcher) - Command dispatcher for Hershel
+- [hershel/examples](https://github.com/hershel/examples) - Example of integration with Hershel
+
+## Thanks
 
 Thanks to Algorythmis for his corrections of the code. Thanks also to Bit My Code for their support and their 💖.
 
-Hershel uses part of [Fastify](https://github.com/fastify/fastify)'s theoretical logic, a fast and low overhead web framework, for Node.js.
+Hershel uses part of [Fastify](https://github.com/fastify/fastify)'s theoretical logic, a fast and low overhead web framework for Node.js.
+
+## License
+
+MIT
