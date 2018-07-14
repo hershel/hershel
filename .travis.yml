@@ -23,10 +23,10 @@ branches:
     - dev
     - /^greenkeeper.*$/
     
-# jobs:
-#   include:
-#     - stage: deploy
-#       if: branch = master
-#       script:
-#         - npm run build
-#         - npm run release
+jobs:
+  include:
+    - stage: deploy
+      if: branch = master
+      script:
+        - npm run build
+        - npm run release
