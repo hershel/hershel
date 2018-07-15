@@ -92,6 +92,7 @@ Hershel was thought to be able to make your bot what you want by giving a solid 
 ## Related
 
 - [hershel/dispatcher](https://github.com/hershel/dispatcher) - Command dispatcher for Hershel
+- [hershel/plugin](https://github.com/hershel/plugin) - Plugin helper for Hershel
 - [hershel/examples](https://github.com/hershel/examples) - Example of integration with Hershel
 
 ## Thanks
