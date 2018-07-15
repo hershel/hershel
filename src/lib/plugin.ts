@@ -4,7 +4,7 @@ import ow from 'ow'
 import { Application } from '../types'
 import { Client } from '../Client'
 
-export const ssoSymbol = Symbol('shoudSkipOverride')
+export const skipOverride = Symbol.for('skip-override')
 
 /**
  * Wrap client in avvio context
@@ -14,7 +14,7 @@ export function createPluginInstance(client: Client) {
   const app = avvio(client, { autostart: false, expose: { use: 'register' } })
 
   app.override = (old, fn: Application.Plugin<any, Client>) => {
-    if (fn[ssoSymbol]) return old
+    if (fn[skipOverride]) return old
 
     const instance: typeof old = Object.create(old)
     // @ts-ignore
@@ -48,7 +48,7 @@ export function plugin(
   ow(fn, ow.function.label('plugin'))
 
   if (options.shouldSkipOverride === false) return fn
-  else fn[ssoSymbol] = true
+  else fn[skipOverride] = true
 
   return fn
 }

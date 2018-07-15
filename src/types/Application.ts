@@ -2,7 +2,7 @@ import * as compose from 'koa-compose'
 import * as discord from 'discord.js'
 import * as avvio from 'avvio'
 
-import { ssoSymbol } from '../lib/plugin'
+import { skipOverride } from '../lib/plugin'
 import { Reply } from '../lib/reply'
 import { Client } from '../Client'
 import { Logger } from './Logger'
@@ -35,6 +35,6 @@ export namespace Application {
   }
 
   export interface Plugin<O, I> extends avvio.Plugin<O, I> {
-    [ssoSymbol]?: boolean
+    [skipOverride]?: boolean
   }
 }
