@@ -1,6 +1,7 @@
+import { plugin } from '@hershel/plugin'
 import test from 'ava'
 
-import { Client, plugin } from '../src'
+import { Client } from '../src'
 
 test('require a plugin', t => {
   t.plan(2)

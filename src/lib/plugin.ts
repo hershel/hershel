@@ -4,7 +4,9 @@ import ow from 'ow'
 import { Application } from '../types'
 import { Client } from '../Client'
 
+export const displayName = Symbol.for('hershel.display-name')
 export const skipOverride = Symbol.for('skip-override')
+export const meta = Symbol.for('plugin-metadata')
 
 /**
  * Wrap client in avvio context
@@ -14,7 +16,7 @@ export function createPluginInstance(client: Client) {
   const app = avvio(client, { autostart: false, expose: { use: 'register' } })
 
   app.override = (old, fn: Application.Plugin<any, Client>) => {
-    if (fn[skipOverride]) return old
+    if (!!fn[skipOverride]) return old
 
     const instance: typeof old = Object.create(old)
     // @ts-ignore
@@ -31,24 +33,4 @@ export function createPluginInstance(client: Client) {
     app.started = false
     await client.destroy()
   })
-}
-
-interface PluginHelperOptions {
-  shouldSkipOverride?: boolean
-}
-
-/**
- * Plugin helper
- * @param fn plugin function
- */
-export function plugin(
-  fn: Application.Plugin<any, Client>,
-  options: PluginHelperOptions = {}
-) {
-  ow(fn, ow.function.label('plugin'))
-
-  if (options.shouldSkipOverride === false) return fn
-  else fn[skipOverride] = true
-
-  return fn
 }

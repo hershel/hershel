@@ -1,4 +1,3 @@
-export { plugin } from './lib/plugin'
 export * from './types/Application'
 export * from './Client'
 
