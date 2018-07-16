@@ -33,6 +33,8 @@
 
 ---
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/hershel/hershel.svg)](https://greenkeeper.io/)
+
 ![demo](https://raw.githubusercontent.com/hershel/hershel/master/media/demo.png)
 
 Hershel is a small, highly modular Discord bots framework based on the fact that you don't need to embed unnecessary features / code in your bot project. Hershel allows you to write your own message processing logic or to use the packages at your disposal to build an awesome Discord bot.
