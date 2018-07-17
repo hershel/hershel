@@ -21,6 +21,10 @@
     <img alt="Coveralls"
     src="https://coveralls.io/repos/github/hershel/hershel/badge.svg?branch=master">
   </a>
+  <a href="https://greenkeeper.io/">
+    <img alt="greenkeeper"
+    src="https://badges.greenkeeper.io/hershel/hershel.svg">
+  </a>
   <a href="https://github.com/prettier/prettier">
     <img alt="Prettier"
     src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg">
@@ -32,8 +36,6 @@
 </p>
 
 ---
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/hershel/hershel.svg)](https://greenkeeper.io/)
 
 ![demo](https://raw.githubusercontent.com/hershel/hershel/master/media/demo.png)
 
