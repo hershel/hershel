@@ -2,7 +2,7 @@ import * as compose from 'koa-compose'
 import * as discord from 'discord.js'
 import * as avvio from 'avvio'
 
-import { skipOverride, displayName, meta } from '../lib/plugin'
+import { skipOverride, displayName, metadata } from '../lib/plugin'
 import { Reply } from '../lib/reply'
 import { Client } from '../Client'
 import { Logger } from './Logger'
@@ -37,6 +37,9 @@ export namespace Application {
   export interface Plugin<O, I> extends avvio.Plugin<O, I> {
     [skipOverride]?: boolean
     [displayName]?: string
-    [meta]?: string
+    [metadata]?: {
+      name?: string
+      [key: string]: any
+    }
   }
 }

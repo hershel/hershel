@@ -4,9 +4,12 @@ import ow from 'ow'
 import { Application } from '../types'
 import { Client } from '../Client'
 
+export const registeredPlugins = Symbol.for('registered-plugin')
 export const displayName = Symbol.for('hershel.display-name')
 export const skipOverride = Symbol.for('skip-override')
-export const meta = Symbol.for('plugin-metadata')
+export const metadata = Symbol.for('plugin-metadata')
+
+type plugin = Application.Plugin<any, Client>
 
 /**
  * Wrap client in avvio context
@@ -15,7 +18,9 @@ export const meta = Symbol.for('plugin-metadata')
 export function createPluginInstance(client: Client) {
   const app = avvio(client, { autostart: false, expose: { use: 'register' } })
 
-  app.override = (old, fn: Application.Plugin<any, Client>) => {
+  app.override = (old, fn: plugin) => {
+    registerPluginName(old, fn)
+
     if (!!fn[skipOverride]) return old
 
     const instance: typeof old = Object.create(old)
@@ -33,4 +38,18 @@ export function createPluginInstance(client: Client) {
     app.started = false
     await client.destroy()
   })
+}
+
+/**
+ * Register plugins name inside client instance
+ * @param client client instance
+ * @param fn plugin function
+ */
+function registerPluginName(client: Client, fn: plugin) {
+  const meta = fn[metadata]
+  if (!meta) return
+
+  const name = meta.name
+  if (!name) return
+  client[registeredPlugins].push(name)
 }
