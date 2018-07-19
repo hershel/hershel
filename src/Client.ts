@@ -5,6 +5,7 @@ import * as pino from 'pino'
 import ow from 'ow'
 
 import { createLogger, createPluginInstance, createReplyFactory } from './lib'
+import { registeredPlugins } from './lib/plugin'
 import { Application as App } from './types'
 
 export class Client extends discord.Client {
@@ -146,6 +147,8 @@ export class Client extends discord.Client {
   private throwIfAlreadyStarted(msg: string) {
     if (this.started) throw new Error(`${msg} while client is already started`)
   }
+
+  [registeredPlugins]: string[] = []
 }
 
 export interface Client {

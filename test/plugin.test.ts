@@ -1,6 +1,8 @@
+import { plugin } from '@hershel/plugin'
 import test from 'ava'
 
-import { Client, plugin } from '../src'
+import { Client } from '../src'
+import { registeredPlugins, metadata } from '../src/lib/plugin'
 
 test('require a plugin', t => {
   t.plan(2)
@@ -41,5 +43,44 @@ test('registering with a plugin helper should not incapsulate its code', t => {
 
   return bot.ready().then(() => {
     t.not(bot.get('test'), 'test value')
+  })
+})
+
+test('plugin name should be registered inside client instance', t => {
+  const bot = new Client()
+
+  function myAwesomePlugin(i, o, n) {
+    n()
+  }
+
+  function shouldNotAppear(i, o, n) {
+    n()
+  }
+
+  function shouldNotAppearAtAll(i, o, n) {
+    n()
+  }
+
+  function withoutAnyMeta(i, o, n) {
+    n()
+  }
+
+  withoutAnyMeta[metadata] = {}
+
+  bot.register(withoutAnyMeta)
+  bot.register(plugin(myAwesomePlugin))
+  bot.register(plugin(shouldNotAppear, { name: 'shouldAppear' }))
+  bot.register(shouldNotAppearAtAll)
+  bot.register(
+    plugin((i, o, n) => {
+      n()
+    })
+  )
+
+  return bot.ready().then(() => {
+    const list = bot[registeredPlugins]
+
+    t.true(Array.isArray(list))
+    t.deepEqual(list, ['myAwesomePlugin', 'shouldAppear', 'anonymous'])
   })
 })

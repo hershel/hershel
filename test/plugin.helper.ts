@@ -1,4 +1,4 @@
-import { plugin } from '../src'
+import { plugin } from '@hershel/plugin'
 
 export const withSso = plugin((i, o, n) => {
   i.set('test-withSso', 'test value')
