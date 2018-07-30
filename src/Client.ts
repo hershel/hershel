@@ -101,13 +101,16 @@ export class Client extends discord.Client {
     this.started = true
 
     const createReply = createReplyFactory(this.config.reply)
+    const genId = this.config.genId
+      ? this.config.genId
+      : (msg: discord.Message) => msg.id
 
     this.on('message', async message => {
       // @ts-ignore
       let ctx: App.Context = {}
 
       //#region create context
-      ctx.id = message.id
+      ctx.id = genId(message)
       ctx.logger = this.logger.child({ id: ctx.id })
       ctx.message = message
       ctx.app = this

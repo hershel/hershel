@@ -32,6 +32,11 @@ export namespace Application {
     logger?: Logger.options
     /** reply base option */
     reply?: discord.RichEmbedOptions
+    /**
+     * A synchronous function that will be used to generate identifiers.
+     * Default ID is discord message ID.
+     */
+    genId?: (message: discord.Message) => string
   }
 
   export interface Plugin<O, I> extends avvio.Plugin<O, I> {

@@ -47,3 +47,20 @@ test.cb('set custom error handler', t => {
 
   setImmediate(() => bot.emit('message', createMessage()))
 })
+
+test.cb('test custom id generation with genId', t => {
+  t.plan(1)
+
+  const bot = new Client({
+    genId: msg => `hello+${msg.id}`
+  })
+
+  bot.use(ctx => {
+    t.is(ctx.id, 'hello+world')
+    t.end()
+  })
+
+  bot.emit('ready')
+
+  setImmediate(() => bot.emit('message', createMessage({ id: 'world' })))
+})
