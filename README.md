@@ -83,7 +83,7 @@ bot.use(async ({ message, id }) => {
 bot.login(process.env.TOKEN)
 ```
 
-That is. Really.
+That's all. Really.
 
 Hershel was thought to be able to make your bot what you want by giving a solid base: you can create a bot streaming music, interactive or just displaying your latest git commits, and this simply, without magic or complexity.
 
