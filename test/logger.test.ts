@@ -32,7 +32,7 @@ test('using pino as the logger', async t => {
     logger: true
   })
 
-  t.is(bot.logger.pino, require('pino/package.json').version)
+  t.is(bot.logger.version, require('pino/package.json').version)
   t.is(bot.logger.level, 'info')
 })
 
