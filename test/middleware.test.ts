@@ -83,7 +83,7 @@ test.cb('should compose middleware set and run it for each message', t => {
   setImmediate(() => bot.emit('message', createMessage()))
 })
 
-test.cb('correct the context that has been passed to middleware', t => {
+test.cb('check context that has been passed to middleware', t => {
   t.plan(6)
 
   // Use pino for this test
@@ -96,7 +96,7 @@ test.cb('correct the context that has been passed to middleware', t => {
     t.is(typeof ctx.createReply, 'function')
     t.is(ctx.id, ctx.message.id)
     // (Keep context ID as message ID ?)
-    t.truthy(ctx.logger.pino)
+    t.truthy(ctx.logger.version)
     t.is(ctx.message.content, 'test message')
     t.deepEqual(ctx.state, {})
 
