@@ -9,7 +9,7 @@ export const displayName = Symbol.for('hershel.display-name')
 export const skipOverride = Symbol.for('skip-override')
 export const metadata = Symbol.for('plugin-metadata')
 
-type plugin = Application.Plugin<any, Client>
+type plugin = Application.Plugin<any>
 
 /**
  * Wrap client in avvio context
