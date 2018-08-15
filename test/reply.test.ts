@@ -75,7 +75,7 @@ test('should not update unsent message', async t => {
   const createReply = createReplyFactory()(message)
   const response = createReply()
 
-  await t.throws(response.update(), {
+  await t.throwsAsync(response.update(), {
     message: 'Cannot update unsent message. Use `.send()`'
   })
 
@@ -102,7 +102,7 @@ test('should not send nor update reply while its payload is empty', async t => {
 
   response.setType('string')
 
-  await t.throws(response.send(), {
+  await t.throwsAsync(response.send(), {
     message: 'Cannot send reply while its payload is empty'
   })
 
@@ -111,7 +111,7 @@ test('should not send nor update reply while its payload is empty', async t => {
   // @ts-ignore
   response._sent = true
 
-  await t.throws(response.update(), {
+  await t.throwsAsync(response.update(), {
     message: 'Cannot update reply while its payload is empty'
   })
 })
@@ -164,7 +164,7 @@ test.serial('should throw when trying to send a reply twice', async t => {
 
   t.true(response.sent, 'after `send()` has been called `.sent` should be true')
 
-  await t.throws(response.send(), {
+  await t.throwsAsync(response.send(), {
     message: 'Cannot send reply twice. Use `update`'
   })
 
