@@ -92,11 +92,9 @@ export class Client extends discord.Client {
     const name = this.user ? this.user.tag : 'TEST MODE'
     this.logger.info(`connected to Discord as ${name}`)
 
-    // Wait for the 'ready' promise
-    const [composed] = await Promise.all([
-      compose(this.middleware),
-      this.ready()
-    ])
+    await this.ready()
+
+    const composed = await compose(this.middleware)
 
     this.started = true
 
