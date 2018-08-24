@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@types/koa-compose": "^3.2.2",
-    "@types/pino": "^4.16.1",
+    "@types/pino": "^5.20.0",
     "abstract-logging": "^1.0.0",
     "avvio": "^5.7.0",
     "discord.js": "^11.4.2",
