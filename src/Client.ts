@@ -60,7 +60,7 @@ export class Client extends discord.Client {
    * Get custom property
    * @param key property key to get
    */
-  public get(key: string) {
+  public get<T = any>(key: string): T {
     if (this.has(key)) return this.custom[key]
 
     return null
