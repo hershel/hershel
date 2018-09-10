@@ -9,8 +9,6 @@ export const displayName = Symbol.for('hershel.display-name')
 export const skipOverride = Symbol.for('skip-override')
 export const metadata = Symbol.for('plugin-metadata')
 
-type plugin = Application.Plugin<any>
-
 /**
  * Wrap client in avvio context
  * @param client client instance
@@ -18,7 +16,7 @@ type plugin = Application.Plugin<any>
 export function createPluginInstance(client: Client) {
   const app = avvio(client, { autostart: false, expose: { use: 'register' } })
 
-  app.override = (old, fn: plugin) => {
+  app.override = (old, fn: Application.Plugin) => {
     registerPluginName(old, fn)
 
     if (!!fn[skipOverride]) return old
@@ -45,7 +43,7 @@ export function createPluginInstance(client: Client) {
  * @param client client instance
  * @param fn plugin function
  */
-function registerPluginName(client: Client, fn: plugin) {
+function registerPluginName(client: Client, fn: Application.Plugin) {
   const meta = fn[metadata]
   if (!meta) return
 

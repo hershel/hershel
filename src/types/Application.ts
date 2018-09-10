@@ -39,7 +39,7 @@ export namespace Application {
     genId?: (message: discord.Message) => string
   }
 
-  export interface Plugin<O, I = Client> extends avvio.Plugin<O, I> {
+  export interface Plugin<O = {}, I = Client> extends avvio.Plugin<O, I> {
     [skipOverride]?: boolean
     [displayName]?: string
     [metadata]?: {
