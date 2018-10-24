@@ -50,48 +50,56 @@ npm i hershel
 ## Example
 
 ```js
+// require Hershel's Client
 const { Client } = require('hershel')
 
-// instanciate Hershel's client
-const bot = new Client()
+// instantiate it
+const bot = new Client({
+  logger: true
+})
 
-// each message will go through this function
-bot.use(({ message, createReply }, next) => {
+bot.use(({ message, state }, next) => {
   if (message.author.bot) return
 
-  // use Hershel's reply API
-  const response = createReply()
-
-  response
-    .setType('string') // set the reply type, wich can be string or embed (default)
-    .setMessage(message.content)
-    .send()
+  state.permission = getPermissionFor(message.author)
 
   next() // call next middleware
 })
 
-// Middlewares can be async too
-bot.use(async ({ message, id }) => {
-  // assert.strictEqual(message.id, id)
+bot.use(({ message, createReply, state }, next) => {
+  // use Hershel's reply API
+  const response = createReply()
 
-  myPrivacyFriendlyDataAnalysisService(message, { idOfTheProcess: id })
+  response // response is an embed by default
+    .setTitle('Echo... Echo... Echo...')
+    .setAuthor(`${message.author} with perm ${state.permission.level}`)
+    .setDescription(message.content)
+    .setFooter('Powered by Hershel')
+    .send()
+
+  response.setTitle('Update embed title 🙈').update()
 })
 
-// Hershel use koa-compose for the middlewares
-// learn more about it https://medium.com/netscape/mastering-koa-middleware-f0af6d327a69
-
-bot.login(process.env.TOKEN)
+bot.login(process.env.DISCORD_TOKEN)
 ```
 
-That's all. Really.
-
-Hershel was thought to be able to make your bot what you want by giving a solid base: you can create a bot streaming music, interactive or just displaying your latest git commits, and this simply, without magic or complexity.
+Do you want to know more? Head to the <code><b>Getting Started</b></code>.
 
 ## Features
 
 - **Modular:** Hershel supports plugin and decorator to make it extremely modular and extensible.
 - **Logging:** We all like clean and clear logs. We use [Pino](https://github.com/pinojs/pino), a super fast, json logger.
 - **Fast:** No more useless feature loading you don't use.
+
+## Documentation
+
+- <code><b>Getting Started</b></code>
+- <code><b>Plugin</b></code>
+- <code><b>Middleware</b></code>
+- <code><b>Reply</b></code>
+- <code><b>Decorator</b></code>
+- <code><b>Logging</b></code>
+- <code><b>Error Handling</b></code>
 
 ## Related
 
@@ -103,7 +111,7 @@ Hershel was thought to be able to make your bot what you want by giving a solid 
 
 Thanks to Algorythmis for his corrections of the code. Thanks also to Bit My Code for their support and their 💖.
 
-Hershel uses part of [Fastify](https://github.com/fastify/fastify)'s theoretical logic, a fast and low overhead web framework for Node.js.
+Hershel uses part of [Fastify](https://github.com/fastify/fastify)'s theoretical logic & documentation layout, a fast and low overhead web framework for Node.js.
 
 ## License
 
