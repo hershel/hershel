@@ -5,12 +5,14 @@ import { Reply } from '../types/Reply'
 
 class Reply extends discord.RichEmbed {
   private _response: discord.Message = null
-  private _type: Reply.Type = 'embed'
+  private _type: Reply.type = 'embed'
   private _message: discord.Message
   private _sent: boolean = false
 
   constructor({ data, msg }: Reply.Options) {
     super(data)
+
+    if (data.type) this.setType(data.type)
 
     this._message = msg
   }
@@ -21,7 +23,7 @@ class Reply extends discord.RichEmbed {
    * Set reply type
    * @param type reply type (string or embed)
    */
-  public setType(type: Reply.Type) {
+  public setType(type: Reply.type) {
     ow(type, ow.string.oneOf(['string', 'embed']))
     this._type = type
 
@@ -112,7 +114,7 @@ class Reply extends discord.RichEmbed {
 
 export { Reply }
 
-export const createReplyFactory = (data?: discord.RichEmbedOptions) => (
+export const createReplyFactory = (data?: Reply.Data) => (
   msg: discord.Message
-) => (override?: discord.RichEmbedOptions) =>
+) => (override?: Reply.Data) =>
   new Reply({ data: { ...data, ...override }, msg })

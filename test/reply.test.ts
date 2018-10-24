@@ -67,6 +67,21 @@ test('should get correct reply payload for `embed` and `string` types', async t 
   }
 })
 
+test('should get correct reply payload with type overload in createReply()', async t => {
+  const message = createMessage()
+
+  const createReply = createReplyFactory()(message)
+  const response = createReply({ type: 'string' })
+
+  t.is(response.type, 'string')
+
+  response.setType('embed')
+  t.is(response.type, 'embed')
+
+  response.setType('string')
+  t.is(response.type, 'string')
+})
+
 test('should not update unsent message', async t => {
   const message = createMessage()
 
