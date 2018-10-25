@@ -67,7 +67,7 @@ The payload is what will be sent as a message to Discord. This payload depends d
 
 #### `string`
 
-If the type is a string, then the reply will be a common character string, and properties that you might have set like .setAuthor, .setTitle etc will not be included in the response and sent. Only .description will be sent as response message content (which can be set via .setDescription or .setMessage).
+If the type is a `string`, then the reply will be a common character string, and properties that you might have set like `.setAuthor`, `.setTitle` etc will **not** be included in the response and sent. Only `.description` will be sent as response message content (which can be set via `.setDescription` or `.setMessage`).
 
 #### `embed`
 
