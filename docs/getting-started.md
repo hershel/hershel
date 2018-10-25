@@ -51,7 +51,7 @@ bot.login(process.env.DISCORD_TOKEN)
 
 You can learn more about the <code><b>Reply</b></code> API.
 
-And _voilà_, your first bot that will answer Hello World in response to all messages, is done. Easy, isn't it?
+And _voilà_, your first bot that will answer Hello World in response to all messages is done. Easy, isn't it?
 
 A basic problem would be to respond to specific commands such as `!joke` or `!help`. Hershel is a platform for easily solving this type of problem, especially with specific packages such as [`@hershel/dispatcher`](https://github.com/hershel/dispatcher) or [`@hershel/plugin`](https://github.com/hershel/plugin), which we will see later on.
 
@@ -134,9 +134,9 @@ module.exports = bot
 This is a simple example of what we call "modular". You can do absolutely everything by following this example. Unlike many frameworks for discord.js, Hershel does not embed an abstraction layer for databases and lets you integrate your favorite ORM / Database simply as shown in this example.
 
 Let's recap our code.
-You can see that we have used `register` twice, for the db and then for the bot. It will load your plugins in the same order you declare them, and it will load the next plugin only once the current one has been loaded. In this way we can register the database connector in the first plugin and use it in the second. Plugin loading starts when you call `.login()`. From that moment, you will no longer be able to add a plugin.
+You can see that we have used `register` twice, for the db and then for the bot. It will load your plugins in the same order you declare them, and it will load the next plugin only once the current one has been loaded. In this way, we can register the database connector in the first plugin and use it in the second. Plugin loading starts when you call `.login()`. From that moment, you will no longer be able to add a plugin.
 
-We have used the `Decorator` API. The purpose of this API is to globalize and share values between code pieces, which adds custom objects to the Hershel namespace, so that they can be used everywhere via `.get(key)`. Read more about <code><b>Decorator</b></code>.
+We have used the `Decorator` API. The purpose of this API is to globalize and share values between code pieces, which adds custom objects to the Hershel namespace so that they can be used everywhere via `.get(key)`. Read more about <code><b>Decorator</b></code>.
 
 To dig deeper into how plugins work, read the <code><b>Plugin</b></code> section.
 
