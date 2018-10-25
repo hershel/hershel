@@ -2,7 +2,7 @@
 
 # Reply
 
-A reply is an object that will be created in iterne by Hershel and will allow you to send a reply message in the same channel as the received message.
+A reply is an object that will be created in intern by Hershel and will allow you to send a reply message in the same channel as the received message.
 
 Reply inherits all the properties of [`discord.RichEmbed`](https://discord.js.org/#/docs/main/stable/class/RichEmbed).
 
@@ -15,7 +15,7 @@ Reply inherits all the properties of [`discord.RichEmbed`](https://discord.js.or
 - `.send(options)` - Send the payload to the Discord channel concerned.
 - `.reset(data)` - Reset reply.
 - `.setType(type)` - Set Reply type.
-- `.update(options)` - Update the reply with the data changed.
+- `.update(options)` - Update the reply with the modified data.
 
 ```js
 const reply = createReply()
@@ -67,11 +67,11 @@ The payload is what will be sent as a message to Discord. This payload depends d
 
 #### `string`
 
-if the type is `string`, then the reply will be a common character string, and properties that you might have set like `.setAuthor`, `.setTitle` etc will **not** be inluded in the reponse and sent. Only `.description` will be sent as response message content (wich can be set via `.setDescription` or `.setMessage`).
+If the type is a string, then the reply will be a common character string, and properties that you might have set like .setAuthor, .setTitle etc will not be included in the response and sent. Only .description will be sent as response message content (which can be set via .setDescription or .setMessage).
 
 #### `embed`
 
-if the type is `embed`, the reply will be a RichEmbed with all its features.
+If the type is `embed`, the reply will be a RichEmbed with all its features.
 
 ### `.response`
 
