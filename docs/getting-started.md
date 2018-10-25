@@ -19,7 +19,7 @@ npm install hershel
 ...or yarn
 
 ```bash
-yarn install hershel
+yarn add hershel
 ```
 
 ## Write your first bot
