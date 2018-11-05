@@ -71,7 +71,7 @@ If the type is `string`, then the reply will be a common character string, and p
 
 #### `embed`
 
-If the type is `embed`, the reply will be a RichEmbed with all its features. 
+If the type is `embed`, the reply will be a RichEmbed with all its features.
 
 ### `.response`
 
