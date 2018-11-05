@@ -1,6 +1,7 @@
 language: node_js
 
 node_js:
+  - 11
   - 10
   - 9
   - 8
@@ -22,7 +23,7 @@ branches:
     - master
     - dev
     - /^greenkeeper.*$/
-    
+
 jobs:
   include:
     - stage: deploy
