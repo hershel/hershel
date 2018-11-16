@@ -154,5 +154,5 @@ await reply
 //   title: 'world'
 //   description: 'hello'
 //   color: 2067276
-// } -> Updated on Discord
+// } -> updated on Discord
 ```
