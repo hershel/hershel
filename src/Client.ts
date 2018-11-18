@@ -28,9 +28,7 @@ export class Client extends discord.Client {
 
     createPluginInstance(this)
 
-    // register discord events
     this.once('ready', this.onReadyEvent)
-    this.on('error', this.logger.error)
   }
 
   /**
