@@ -30,7 +30,7 @@
   "devDependencies": {
     "@hershel/plugin": "^1.0.2",
     "@types/node": "^10.7.1",
-    "@types/sinon": "^5.0.1",
+    "@types/sinon": "^7.0.0",
     "ava": "^1.0.0-beta.7",
     "coveralls": "^3.0.2",
     "flush-write-stream": "^1.0.3",
