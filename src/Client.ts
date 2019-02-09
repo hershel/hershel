@@ -21,7 +21,7 @@ export class Client extends discord.Client {
   ) {
     super(clientOptions)
 
-    ow(options, ow.object.label('options'))
+    ow(options, 'options', ow.object)
 
     this.config = options
     this.logger = createLogger(options.logger)
@@ -38,7 +38,7 @@ export class Client extends discord.Client {
   public use(fn: App.middleware) {
     this.throwIfAlreadyStarted('Cannot add new middleware')
 
-    ow(fn, ow.function.label('middleware'))
+    ow(fn, 'middleware', ow.function)
     this.middleware.push(fn)
 
     return this
@@ -79,7 +79,7 @@ export class Client extends discord.Client {
   public setErrorHandler(fn: (err: Error) => void) {
     this.throwIfAlreadyStarted('Cannot set error handler')
 
-    ow(fn, ow.function.label('error handler'))
+    ow(fn, 'error handler', ow.function)
     this.handleError = fn
   }
 
