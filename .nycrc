@@ -1,4 +1,4 @@
 {
-  "exclude": ["**/*.d.ts", "./test/*", "./src/types/*", "ava.config.js"],
+  "exclude": ["**/*.d.ts", "**/test/*", "**/types/*", "ava.config.js"],
   "extension": [".ts"]
 }
