@@ -37,7 +37,7 @@
     "nyc": "^13.2.0",
     "prettier": "^1.14.2",
     "semantic-release": "^15.9.8",
-    "sinon": "^6.1.5",
+    "sinon": "^7.2.4",
     "ts-node": "^7.0.1",
     "typescript": "^3.0.1"
   },
