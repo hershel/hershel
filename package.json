@@ -31,7 +31,7 @@
     "@hershel/plugin": "^1.0.2",
     "@types/node": "^12.0.0",
     "@types/sinon": "^7.0.0",
-    "ava": "^1.0.0-beta.7",
+    "ava": "^2.0.0",
     "coveralls": "^3.0.2",
     "flush-write-stream": "^2.0.0",
     "nyc": "^14.0.0",
