@@ -89,10 +89,7 @@ async function mongoPlugin(instance, options) {
   const url = options.url
   delete options.url
 
-  const db = await MongoClient.connect(
-    url,
-    options
-  )
+  const db = await MongoClient.connect(url, options)
 
   instance.set('db', db)
 }
