@@ -1,6 +1,7 @@
 media/
 src/
 test/
+doc/
 .nyc_output/
 ava.config.js
 tsconfig.json
