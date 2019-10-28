@@ -2,7 +2,7 @@
 
 # Logging
 
-The log system is powered by [Pino](http://getpino.io/), wich is a super fast Node.js logger. By default, the log system is disabled and you can activate it by passing `logger: true` or `logger: pinoOptions` in Hershel Client options.
+The log system is powered by [Pino](http://getpino.io/), wich is a super fast Node.js logger. By default, the log system is disabled and you can enable it by passing `logger: true` or `logger: pinoOptions` in Hershel Client options.
 
 ```js
 const { Client } = require('hershel')
@@ -16,7 +16,7 @@ bot.use({ logger, id } => {
 })
 ```
 
-You can interact on Pino by passing the appropriate options directly to the Client's builder.
+You can interact with Pino by passing the appropriate options directly to the Client's builder.
 
 ```js
 const { Client } = require('hershel')

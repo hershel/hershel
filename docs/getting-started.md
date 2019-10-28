@@ -4,7 +4,7 @@
 
 Thank you for taking a look at Hershel!
 
-This document is intended to introduce you to the functionalities of Hershel.
+This document is intended to introduce you to the features of Hershel.
 
 ## Install
 
@@ -24,7 +24,7 @@ yarn add hershel
 
 ## Write your first bot
 
-To develop a Discord bot, you will need a unique Discord bot token. Go to [Discord Dev](https://discordapp.com/developers/applications/) and generate a new application. We will use the token of the latter through the examples.
+To develop a Discord bot, you will need a unique Discord bot token. Go to [Discord Dev](https://discordapp.com/developers/applications/) and generate a new application. We will use the token that you have to get there through the examples.
 
 Let's write our first bot.
 
@@ -51,9 +51,9 @@ bot.login(process.env.DISCORD_TOKEN)
 
 You can learn more about the <code><b>Reply</b></code> API.
 
-And _voilà_, your first bot that will answer Hello World in response to all messages, is done. Easy, isn't it?
+And _voilà_, your first bot that will answer Hello World in response to all messages, is written. Easy, isn't it?
 
-A basic problem would be to respond to specific commands such as `!joke` or `!help`. Hershel is a platform for easily solving this type of problem, especially with specific packages such as [`@hershel/dispatcher`](https://github.com/hershel/dispatcher) or [`@hershel/plugin`](https://github.com/hershel/plugin), which we will see later on.
+A basic problem would be to respond to specific commands such as `!joke` or `!help`. Hershel aims to enable you to easily solve this type of problem, especially with specific packages such as [`@hershel/dispatcher`](https://github.com/hershel/dispatcher) or [`@hershel/plugin`](https://github.com/hershel/plugin), which we will see later on.
 
 ## Plugin
 
@@ -165,4 +165,4 @@ bot.use(async ({ state, createReply }) => {
 bot.login(process.env.DISCORD_TOKEN)
 ```
 
-To learn more about, a section is dedicated to the <code><b>Middleware</b></code>.
+To learn more about this, a section is dedicated to the <code><b>Middleware</b></code>.

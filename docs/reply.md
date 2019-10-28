@@ -2,11 +2,11 @@
 
 # Reply
 
-A reply is an object that will be created in intern by Hershel and will allow you to send a reply message in the same channel as the received message.
+A reply is an object that will be created internally by Hershel and will allow you to send a reply message in the same channel as the received message.
 
 Reply inherits all the properties of [`discord.RichEmbed`](https://discord.js.org/#/docs/main/stable/class/RichEmbed).
 
-- `.message` - Message for which the response was created.
+- `.message` - The message for which the response was created.
 - `.sent` - A boolean value that you can use if you need to know if `send` has already been called.
 - `.payload` - Reply payload to be sent to Discord.
 - `.response` - Response message.
@@ -47,7 +47,7 @@ const reply = createReply({ type: 'string', title: 'Hello World!' })
 
 ### `.message`
 
-Each Reply is linked to a single message, the one with which it was created. `.message` is the discord.js object of the latter and cannot be null nor undefined.
+Each Reply is linked to a single message, the one with which it was created. `.message` is its discord.js object and cannot be null nor undefined.
 
 ### `.sent`
 
@@ -79,7 +79,7 @@ Response is the answer linked to the reply and therefore allows to keep it in me
 
 ### `.type`
 
-Reply type wich is a string that can be `string` or `embed` (default to `embed`).
+Reply type which is a string that can be `string` or `embed` (default to `embed`).
 
 ### `.setMessage(message)`
 
@@ -87,13 +87,13 @@ Alias for `.setDescription`.
 
 ### `.send(options)`
 
-Send the payload of the Reply and can take as options the standard [message options](https://discord.js.org/#/docs/main/stable/typedef/MessageOptions) to send a message.
+Sends the payload of the Reply. This method can take as options the standard [message options](https://discord.js.org/#/docs/main/stable/typedef/MessageOptions) to send a message.
 
 > A reply can only be sent **once**, otherwise an error will be thrown. See `.update` for more information.
 
 ### `.reset(data)`
 
-Reset reply and applies the properties given as options.
+Resets reply and applies the properties given as options.
 
 ```js
 reply

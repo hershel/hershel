@@ -2,9 +2,9 @@
 
 # Decorator
 
-If you need to add functionality to the Hershel instance, the `decorate` API is what you need.
+If you need to add somes features to the Hershel instance, the `decorate` API is what you need.
 
-The API allows you to add new properties to the Hershel instance. A value is not restricted to a function and could also be an object or a string, for example.
+The API allows you to add new properties to the Hershel instance. A value is not restricted to a function and can also be an object or a string, for example.
 
 ### Usage
 

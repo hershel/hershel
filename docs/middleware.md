@@ -2,7 +2,7 @@
 
 # Middleware
 
-The middleware system is provided by [koa-compose](https://github.com/koajs/compose). I recommend reading [this article](https://medium.com/netscape/mastering-koa-middleware-f0af6d327a69) to learn how to understand the extremely powerful middleware system.
+The middleware system is provided by [koa-compose](https://github.com/koajs/compose). I recommend reading [this article](https://medium.com/netscape/mastering-koa-middleware-f0af6d327a69) to learn about its extremely powerful middleware system.
 
 ```js
 const { Client } = require('hershel')
@@ -35,4 +35,4 @@ bot.use(({ message }, next) => {
 // ERROR: Cannot add new middleware while client is already started
 ```
 
-Once the client has started, middleware stack is sealed and can no longer be modified.
+Once the client has started, the middleware stack is sealed and can no longer be modified.
