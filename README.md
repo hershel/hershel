@@ -66,18 +66,18 @@ bot.use(({ message, state }, next) => {
   next() // call next middleware
 })
 
-bot.use(({ message, createReply, state }, next) => {
+bot.use(async ({ message, createReply, state }) => {
   // use Hershel's reply API
   const response = createReply()
 
-  response // response is an embed by default
+  await response // response is an embed by default
     .setTitle('Echo... Echo... Echo...')
     .setAuthor(`${message.author} with perm ${state.permission.level}`)
     .setDescription(message.content)
     .setFooter('Powered by Hershel')
-    .send()
+    .send() // returns a promise
 
-  response.setTitle('Update embed title 🙈').update()
+  await response.setTitle('Update embed title 🙈').update()
 })
 
 bot.login(process.env.DISCORD_TOKEN)
@@ -93,13 +93,12 @@ Do you want to know more? Head to the <code><b>Getting Started</b></code>.
 
 ## Documentation
 
-- <code><b>Getting Started</b></code>
-- <code><b>Plugin</b></code>
-- <code><b>Middleware</b></code>
-- <code><b>Reply</b></code>
-- <code><b>Decorator</b></code>
-- <code><b>Logging</b></code>
-- <code><b>Error Handling</b></code>
+- <a href="./docs/getting-started.md"><code><b>Getting Started</b></code></a>
+- <a href="./docs/plugin.md"><code><b>Plugin</b></code>
+- <a href="./docs/middleware.md"><code><b>Middleware</b></code>
+- <a href="./docs/reply.md"><code><b>Reply</b></code>
+- <a href="./docs/decorator.md"><code><b>Decorator</b></code>
+- <a href="./docs/logging.md"><code><b>Logging</b></code>
 
 ## Related
 
