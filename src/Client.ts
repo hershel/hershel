@@ -101,7 +101,7 @@ export class Client extends discord.Client {
       ? this.config.genId
       : (msg: discord.Message) => msg.id
 
-    this.on('message', async message => {
+    this.on('message', async (message) => {
       // @ts-ignore
       let ctx: App.Context = {}
 
@@ -119,7 +119,7 @@ export class Client extends discord.Client {
 
       composed(ctx)
         .then(() => this.middlewareCallback(ctx, null))
-        .catch(err => this.middlewareCallback(ctx, err))
+        .catch((err) => this.middlewareCallback(ctx, err))
     })
   }
 

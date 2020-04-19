@@ -7,9 +7,9 @@ const serializers = {
   message: (msg: discord.Message) => ({
     id: msg.id,
     content: msg.content,
-    author: msg.author.tag
+    author: msg.author.tag,
   }),
-  err: pino.stdSerializers.err
+  err: pino.stdSerializers.err,
 }
 
 export function createLogger(options: Logger.options) {

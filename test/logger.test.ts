@@ -5,7 +5,7 @@ import test from 'ava'
 import { Client } from '../src'
 import { createMessage } from './discord.helper'
 
-test('the logger defaults to an abstraction', async t => {
+test('the logger defaults to an abstraction', async (t) => {
   const bot = new Client()
 
   t.is(bot.logger.level, 'abstract')
@@ -19,40 +19,40 @@ test('the logger defaults to an abstraction', async t => {
   t.is(typeof bot.logger.child, 'function')
 })
 
-test('when `logger` is false, an abstraction is provided as a logger', async t => {
+test('when `logger` is false, an abstraction is provided as a logger', async (t) => {
   const bot = new Client({
-    logger: false
+    logger: false,
   })
 
   t.is(bot.logger.level, 'abstract')
 })
 
-test('using pino as the logger', async t => {
+test('using pino as the logger', async (t) => {
   const bot = new Client({
-    logger: true
+    logger: true,
   })
 
   t.is(bot.logger.version, require('pino/package.json').version)
   t.is(bot.logger.level, 'info')
 })
 
-test('provide custom options to pino', async t => {
+test('provide custom options to pino', async (t) => {
   const bot = new Client({
     logger: {
       level: 'error',
-      name: 'test-logger-03'
-    }
+      name: 'test-logger-03',
+    },
   })
 
   t.is(bot.logger.level, 'error')
 })
 
-test.cb('test custom serializers', t => {
+test.cb('test custom serializers', (t) => {
   t.plan(3)
 
   const bot = new Client({
     logger: {
-      stream: sink(chunk => {
+      stream: sink((chunk) => {
         const { message } = chunk
 
         t.is(typeof message.id, 'string')
@@ -60,8 +60,8 @@ test.cb('test custom serializers', t => {
         t.is(message.author, 'HelloWorld#0001')
 
         t.end()
-      })
-    }
+      }),
+    },
   })
 
   const message = createMessage()
@@ -69,12 +69,12 @@ test.cb('test custom serializers', t => {
   bot.logger.info({ message })
 })
 
-test.cb('test logger inheritance', t => {
+test.cb('test logger inheritance', (t) => {
   t.plan(2)
 
   const logger = pino(
     { base: { hello: 'world' } },
-    sink(chunk => {
+    sink((chunk) => {
       t.is(chunk.hello, 'world')
       t.is(chunk.world, 'hello')
 
@@ -84,8 +84,8 @@ test.cb('test logger inheritance', t => {
 
   const bot = new Client({
     logger: {
-      logger
-    }
+      logger,
+    },
   })
 
   bot.logger.info({ world: 'hello' })

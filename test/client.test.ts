@@ -3,20 +3,20 @@ import test from 'ava'
 import { createMessage } from './discord.helper'
 import { Client } from '../src'
 
-test('`new client` should throw when instanciated with wrong options', async t => {
+test('`new client` should throw when instanciated with wrong options', async (t) => {
   // @ts-ignore
   t.throws(() => new Client('lol'), {
     message:
-      'Expected `options` to be of type `object` but received type `string`'
+      'Expected `options` to be of type `object` but received type `string`',
   })
 })
 
-test.cb('close client instance', t => {
+test.cb('close client instance', (t) => {
   t.plan(1)
 
   const bot = new Client()
 
-  bot.close(err => {
+  bot.close((err) => {
     if (err) t.fail(err.message)
 
     t.false(bot.started, 'should destroy Discord client')
@@ -25,7 +25,7 @@ test.cb('close client instance', t => {
   })
 })
 
-test.cb('set custom error handler', t => {
+test.cb('set custom error handler', (t) => {
   t.plan(1)
 
   const bot = new Client()
@@ -33,7 +33,7 @@ test.cb('set custom error handler', t => {
   // @ts-ignore
   bot.user = { tag: 'TEST MODE' }
 
-  bot.setErrorHandler(err => {
+  bot.setErrorHandler((err) => {
     t.is(err.message, 'middleware error')
 
     t.end()
@@ -48,14 +48,14 @@ test.cb('set custom error handler', t => {
   setImmediate(() => bot.emit('message', createMessage()))
 })
 
-test.cb('test custom id generation with genId', t => {
+test.cb('test custom id generation with genId', (t) => {
   t.plan(1)
 
   const bot = new Client({
-    genId: msg => `hello+${msg.id}`
+    genId: (msg) => `hello+${msg.id}`,
   })
 
-  bot.use(ctx => {
+  bot.use((ctx) => {
     t.is(ctx.id, 'hello+world')
     t.end()
   })

@@ -4,7 +4,7 @@ import test from 'ava'
 import { Client } from '../src'
 import { registeredPlugins, metadata } from '../src/lib/plugin'
 
-test('require a plugin', t => {
+test('require a plugin', (t) => {
   t.plan(2)
   const bot = new Client()
 
@@ -17,7 +17,7 @@ test('require a plugin', t => {
   })
 })
 
-test('registering with a plugin helper should not incapsulate its code', t => {
+test('registering with a plugin helper should not incapsulate its code', (t) => {
   t.plan(4)
 
   const bot = new Client()
@@ -46,7 +46,7 @@ test('registering with a plugin helper should not incapsulate its code', t => {
   })
 })
 
-test('plugin name should be registered inside client instance', t => {
+test('plugin name should be registered inside client instance', (t) => {
   const bot = new Client()
 
   function myAwesomePlugin(i, o, n) {

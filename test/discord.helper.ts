@@ -9,13 +9,13 @@ const defaultMessage: CreateMessageTypes = {
   id: Date.now().toString(),
   content: 'hello world',
   author: {
-    tag: 'HelloWorld#0001'
+    tag: 'HelloWorld#0001',
   },
   channel: { send: () => {} },
-  edit: () => {}
+  edit: () => {},
 }
 
 export const createMessage = (items?: Partial<CreateMessage>) => ({
   ...defaultMessage,
-  ...items
+  ...items,
 })

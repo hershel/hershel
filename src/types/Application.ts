@@ -22,7 +22,7 @@ export namespace Application {
     /** namespace for passing info through middleware */
     state: Record<any, any>
     /** create reply function */
-    createReply: (override?: discord.RichEmbedOptions) => Reply
+    createReply: (override?: discord.MessageEmbedOptions) => Reply
     /** allows context overloading */
     [key: string]: any
   }
@@ -31,7 +31,7 @@ export namespace Application {
     /** logger options */
     logger?: Logger.options
     /** reply base option */
-    reply?: discord.RichEmbedOptions
+    reply?: discord.MessageEmbedOptions
     /**
      * A synchronous function that will be used to generate identifiers.
      * Default ID is discord message ID.

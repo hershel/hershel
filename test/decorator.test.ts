@@ -2,7 +2,7 @@ import test from 'ava'
 
 import { Client } from '../src'
 
-test('decorator methods should exist', t => {
+test('decorator methods should exist', (t) => {
   const bot = new Client()
 
   t.truthy(bot.has)
@@ -10,7 +10,7 @@ test('decorator methods should exist', t => {
   t.truthy(bot.set)
 })
 
-test('`set` and `get` should set and get the specified values', async t => {
+test('`set` and `get` should set and get the specified values', async (t) => {
   const bot = new Client()
 
   const testValue = Math.random()
@@ -22,7 +22,7 @@ test('`set` and `get` should set and get the specified values', async t => {
   t.is(bot.get('test'), testValue)
 })
 
-test('`has` should check if the given method already exists', async t => {
+test('`has` should check if the given method already exists', async (t) => {
   t.plan(2)
   const bot = new Client()
 
@@ -39,18 +39,18 @@ test('`has` should check if the given method already exists', async t => {
   })
 })
 
-test('`set` should throw if trying to redeclare a property', async t => {
+test('`set` should throw if trying to redeclare a property', async (t) => {
   const bot = new Client()
 
   const testValue = Math.random()
 
   bot.set('test', testValue)
   t.throws(() => bot.set('test', testValue), {
-    message: '`test` key already exists'
+    message: '`test` key already exists',
   })
 })
 
-test('server custom properties should be incapsulated with .register', t => {
+test('server custom properties should be incapsulated with .register', (t) => {
   t.plan(4)
   const bot = new Client()
 
@@ -72,7 +72,7 @@ test('server custom properties should be incapsulated with .register', t => {
   })
 })
 
-test('different instances should mean different decorations', async t => {
+test('different instances should mean different decorations', async (t) => {
   t.plan(1)
 
   const bot1 = new Client()

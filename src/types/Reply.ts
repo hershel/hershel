@@ -1,10 +1,11 @@
 import * as discord from 'discord.js'
 
 export namespace Reply {
-  export type type = 'string' | 'embed'
+  export type shape = 'string' | 'embed'
 
-  export interface Data extends discord.RichEmbedOptions {
-    type?: type
+  export interface Data extends discord.MessageEmbedOptions {
+    /** shape of the reply. Can be an Embed or a string **/
+    shape?: shape
   }
 
   export interface Options {

@@ -3,16 +3,16 @@ import ow from 'ow'
 
 import { Reply } from '../types/Reply'
 
-class Reply extends discord.RichEmbed {
+class Reply extends discord.MessageEmbed {
   private _response: discord.Message = null
-  private _type: Reply.type = 'embed'
+  private _shape: Reply.shape = 'embed'
   private _message: discord.Message
-  private _sent: boolean = false
+  private _is_sent: boolean = false
 
   constructor({ data, msg }: Reply.Options) {
     super(data)
 
-    if (data.type) this.setType(data.type)
+    if (data.shape) this.setShape(data.shape)
 
     this._message = msg
   }
@@ -20,12 +20,12 @@ class Reply extends discord.RichEmbed {
   public setMessage = this.setDescription
 
   /**
-   * Set reply type
-   * @param type reply type (string or embed)
+   * Set reply shape
+   * @param type reply shape ('string' or 'embed')
    */
-  public setType(type: Reply.type) {
+  public setShape(type: Reply.shape) {
     ow(type, ow.string.oneOf(['string', 'embed']))
-    this._type = type
+    this._shape = type
 
     return this
   }
@@ -35,14 +35,14 @@ class Reply extends discord.RichEmbed {
    * @param options message options
    */
   public async send(options?: discord.MessageOptions) {
-    if (this._sent) throw new Error('Cannot send reply twice. Use `update`')
+    if (this._is_sent) throw new Error('Cannot send reply twice. Use `update`')
 
     const payload = this.payload()
     if (!payload) {
       throw new Error('Cannot send reply while its payload is empty')
     }
 
-    this._sent = true
+    this._is_sent = true
 
     this._response = (await this._message.channel.send(
       payload,
@@ -57,7 +57,7 @@ class Reply extends discord.RichEmbed {
    * @param options message edit options
    */
   public async update(options?: discord.MessageEditOptions) {
-    if (!this._sent) {
+    if (!this._is_sent) {
       throw new Error('Cannot update unsent message. Use `.send()`')
     }
 
@@ -73,34 +73,32 @@ class Reply extends discord.RichEmbed {
    * Get message payload
    */
   public payload() {
-    const type = this._type
-    return type === 'embed' ? new discord.RichEmbed(this) : this.description
+    return this._shape === 'embed'
+      ? new discord.MessageEmbed(this)
+      : this.description
   }
 
   /**
    * Reset reply
    * @param data properties to set
    */
-  public reset(data: discord.RichEmbedOptions = {}) {
-    this.title = data.title
-    this.description = data.description
-    this.url = data.url
-    this.color = data.color as number
-    this.author = data.author
-    this.timestamp = data.timestamp
-    this.fields = data.fields || []
-    this.thumbnail = data.thumbnail
-    this.image = data.image
-    this.footer = data.footer
-    this.file = data.file
+  public reset(data: discord.MessageEmbedOptions = {}) {
+    // @ts-ignore
+    this.setup(data)
   }
 
-  get type() {
-    return this._type
+  /**
+   * Shape of the reply. Can be 'string' or 'embed'.
+   */
+  get shape() {
+    return this._shape
   }
 
-  get sent() {
-    return this._sent
+  /**
+   * If the reply is already sent
+   */
+  get is_sent() {
+    return this._is_sent
   }
 
   get response() {

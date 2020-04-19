@@ -4,7 +4,7 @@ import { noop, noopAsync } from './middleware.helper'
 import { createMessage } from './discord.helper'
 import { Client } from '../src'
 
-test('should add middleware correctly', async t => {
+test('should add middleware correctly', async (t) => {
   const bot = new Client()
 
   t.notThrows(() => bot.use(noop))
@@ -14,17 +14,17 @@ test('should add middleware correctly', async t => {
   t.is(bot.middleware.length, 2)
 })
 
-test('should throw when middleware is not a function', async t => {
+test('should throw when middleware is not a function', async (t) => {
   const bot = new Client()
 
   // @ts-ignore
   t.throws(() => bot.use('Hello world'), {
     message:
-      'Expected `middleware` to be of type `Function` but received type `string`'
+      'Expected `middleware` to be of type `Function` but received type `string`',
   })
 })
 
-test.cb('should not register middleware when instance is started', t => {
+test.cb('should not register middleware when instance is started', (t) => {
   t.plan(1)
 
   const bot = new Client()
@@ -33,14 +33,14 @@ test.cb('should not register middleware when instance is started', t => {
 
   setImmediate(() => {
     t.throws(() => bot.use(() => {}), {
-      message: 'Cannot add new middleware while client is already started'
+      message: 'Cannot add new middleware while client is already started',
     })
 
     t.end()
   })
 })
 
-test.cb('error inside middleware should not crash the client', t => {
+test.cb('error inside middleware should not crash the client', (t) => {
   t.plan(1)
 
   const bot = new Client()
@@ -59,7 +59,7 @@ test.cb('error inside middleware should not crash the client', t => {
   })
 })
 
-test.cb('should compose middleware set and run it for each message', t => {
+test.cb('should compose middleware set and run it for each message', (t) => {
   t.plan(1)
 
   const bot = new Client()
@@ -83,15 +83,15 @@ test.cb('should compose middleware set and run it for each message', t => {
   setImmediate(() => bot.emit('message', createMessage()))
 })
 
-test.cb('check context that has been passed to middleware', t => {
+test.cb('check context that has been passed to middleware', (t) => {
   t.plan(6)
 
   // Use pino for this test
   const bot = new Client({
-    logger: { level: 'silent' }
+    logger: { level: 'silent' },
   })
 
-  bot.use(ctx => {
+  bot.use((ctx) => {
     t.is(ctx.app, bot)
     t.is(typeof ctx.createReply, 'function')
     t.is(ctx.id, ctx.message.id)
