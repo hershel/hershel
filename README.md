@@ -55,7 +55,7 @@ const { Client } = require('hershel')
 
 // instantiate it
 const bot = new Client({
-  logger: true
+  logger: true,
 })
 
 bot.use(({ message, state }, next) => {
