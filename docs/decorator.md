@@ -22,7 +22,7 @@ As said above, you can also decorate the instance with non-function values:
 ```js
 instance.set('conf', {
   db: 'some.db',
-  port: 3000
+  port: 3000,
 })
 ```
 

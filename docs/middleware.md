@@ -10,8 +10,8 @@ const { Client } = require('hershel')
 const bot = new Client({
   logger: {
     level: 'info',
-    stream: myStream
-  }
+    stream: myStream,
+  },
 })
 
 bot.use(({ id }, next) => {

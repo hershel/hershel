@@ -16,7 +16,7 @@ Creating a plugin is very easy, you just need to create a function that takes th
 Example:
 
 ```js
-module.exports = function(instance, opts, done) {
+module.exports = function (instance, opts, done) {
   instance.set('utility', () => {})
 
   done()
@@ -26,7 +26,7 @@ module.exports = function(instance, opts, done) {
 or if you prefer ES6 with async/await:
 
 ```js
-module.exports = async function(instance, opts) {
+module.exports = async function (instance, opts) {
   instance.set('utility', () => {})
 }
 ```

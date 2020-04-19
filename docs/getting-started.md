@@ -34,7 +34,7 @@ const { Client } = require('hershel')
 
 // instantiate it
 const bot = new Client({
-  logger: true
+  logger: true,
 })
 
 bot.use(({ createReply, message }) => {
@@ -67,11 +67,11 @@ Let's rewrite our first code by adding the support of [`mongo DB`](https://www.m
 const { Client } = require('hershel')
 
 const bot = new Client({
-  logger: true
+  logger: true,
 })
 
 bot.register(require('our-db-connector'), {
-  url: 'mongodb://localhost:27017/'
+  url: 'mongodb://localhost:27017/',
 })
 
 bot.register(require('./our-bot'))
@@ -98,7 +98,7 @@ async function mongoPlugin(instance, options) {
 // (via set, get and has) & middlewares inside the plugin to the parent scope.
 module.exports = plugin(dbConnector, {
   shouldSkipOverride: true,
-  name: 'mongodb'
+  name: 'mongodb',
 })
 ```
 
@@ -147,7 +147,7 @@ const { Client } = require('hershel')
 
 // instantiate it
 const bot = new Client({
-  logger: true
+  logger: true,
 })
 
 bot.use(({ message, state }, next) => {

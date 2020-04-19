@@ -96,10 +96,7 @@ Sends the payload of the Reply. This method can take as options the standard [me
 Resets reply and applies the properties given as options.
 
 ```js
-reply
-  .setTitle('hello')
-  .setFooter('world')
-  .setDescription('-')
+reply.setTitle('hello').setFooter('world').setDescription('-')
 
 // Reply {
 //   title: 'hello'
@@ -133,11 +130,7 @@ Set reply type between `string` and `embed`.
 Allows you to update a response with the new payload.
 
 ```js
-await reply
-  .setTitle('hello')
-  .setDescription('world')
-  .setColor(2067276)
-  .send()
+await reply.setTitle('hello').setDescription('world').setColor(2067276).send()
 
 // Reply {
 //   title: 'hello'
@@ -145,10 +138,7 @@ await reply
 //   color: 2067276
 // } -> sent to Discord
 
-await reply
-  .setTitle('world')
-  .setDescription('hello')
-  .update()
+await reply.setTitle('world').setDescription('hello').update()
 
 // Reply {
 //   title: 'world'
