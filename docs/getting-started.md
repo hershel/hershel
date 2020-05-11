@@ -151,7 +151,7 @@ const bot = new Client({
 })
 
 bot.use(({ message, state }, next) => {
-  state.size = message.content
+  state.size = message?.content?.length ?? 0 
 
   next()
 })
