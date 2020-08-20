@@ -209,49 +209,45 @@ test.serial('test sending a message with Discord options', async (t) => {
   sendStub.restore()
 })
 
-// see https://github.com/discordjs/discord.js/pull/4097
-test.serial.failing(
-  'updating reply refresh only changed properties',
-  async (t) => {
-    const message = createMessage()
+test.serial('updating reply refresh only changed properties', async (t) => {
+  const message = createMessage()
 
-    const editStub = stub(message, 'edit')
-    const sendStub = stub(message.channel, 'send').returns(message)
+  const editStub = stub(message, 'edit')
+  const sendStub = stub(message.channel, 'send').returns(message)
 
-    const createReply = createReplyFactory()(message)
-    const response = createReply()
+  const createReply = createReplyFactory()(message)
+  const response = createReply()
 
-    response
+  response
+    .setTitle('test title')
+    .setDescription('test description')
+    .setFooter('test footer')
+
+  await response.send()
+
+  response.setTitle('updated title').setURL('https://example.com')
+
+  await response.update()
+
+  t.true(sendStub.calledOnce)
+  t.deepEqual(
+    sendStub.firstCall.args[0],
+    new discord.MessageEmbed()
       .setTitle('test title')
       .setDescription('test description')
       .setFooter('test footer')
+  )
 
-    await response.send()
+  t.true(editStub.calledOnce)
+  t.deepEqual(
+    editStub.firstCall.args[0],
+    new discord.MessageEmbed()
+      .setTitle('updated title')
+      .setURL('https://example.com')
+      .setDescription('test description')
+      .setFooter('test footer')
+  )
 
-    response.setTitle('updated title').setURL('https://example.com')
-
-    await response.update()
-
-    t.true(sendStub.calledOnce)
-    t.deepEqual(
-      sendStub.firstCall.args[0],
-      new discord.MessageEmbed()
-        .setTitle('test title')
-        .setDescription('test description')
-        .setFooter('test footer')
-    )
-
-    t.true(editStub.calledOnce)
-    t.deepEqual(
-      editStub.firstCall.args[0],
-      new discord.MessageEmbed()
-        .setTitle('updated title')
-        .setURL('https://example.com')
-        .setDescription('test description')
-        .setFooter('test footer')
-    )
-
-    sendStub.restore()
-    editStub.restore()
-  }
-)
+  sendStub.restore()
+  editStub.restore()
+})
