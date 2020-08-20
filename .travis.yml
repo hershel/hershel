@@ -16,12 +16,6 @@ script:
   - npm run test
   - npm run coverage
 
-branches:
-  only:
-    - master
-    - dev
-    - /^greenkeeper.*$/
-
 jobs:
   include:
     - stage: deploy
