@@ -4423,12 +4423,12 @@ osenv@^0.1.4, osenv@^0.1.5:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
-ow@^0.18.0:
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/ow/-/ow-0.18.0.tgz#68fbd5747c932db398e8be1334408ef4b1f00708"
-  integrity sha512-2Rc7sTon3MDhWsrMB4mbppPA6ldQmGtDQadpE03RQw3ebcgsuNw43IYa1eDWwrSdWglCikduZC8cuBLnA34Teg==
+ow@^0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/ow/-/ow-0.19.0.tgz#7f1c818b929a715904819fbb70cb539307b360aa"
+  integrity sha512-xv/vJrp5Pnt4kOVxwR9QniIzr4Ktd5LfnayoUhPYJbW2A6EZ6rPKWJLYySOxU4wjghEn0eg5/GFTAlnl3HEVcA==
   dependencies:
-    type-fest "^0.17.0"
+    type-fest "^0.18.0"
 
 p-cancelable@^1.0.0:
   version "1.1.0"
@@ -5997,10 +5997,10 @@ type-fest@^0.13.1:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.13.1.tgz#0172cb5bce80b0bd542ea348db50c7e21834d934"
   integrity sha512-34R7HTnG0XIJcBSn5XhDd7nNFPRcXYRZrBB2O2jdKqYODldSzBAqzsWoZYYvduky73toYS/ESqxPvkDf/F0XMg==
 
-type-fest@^0.17.0:
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.17.0.tgz#268bb55d38701ce3915f60a4367a1e9f28672deb"
-  integrity sha512-EFi9HE4hHj85XnVV80uAUMgICQmhxYgiEvtmfpcD6jqn6zYr36HxAU6k+i/DSY28TK7/lYL0s4v/kWmiKdqaoA==
+type-fest@^0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.18.0.tgz#2edfa6382d48653707344f7fccdb0443d460e8d6"
+  integrity sha512-fbDukFPnJBdn2eZ3RR+5mK2slHLFd6gYHY7jna1KWWy4Yr4XysHuCdXRzy+RiG/HwG4WJat00vdC2UHky5eKiQ==
 
 type-fest@^0.3.0:
   version "0.3.1"
