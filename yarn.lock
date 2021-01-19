@@ -1003,9 +1003,9 @@ ava@^3.11.1:
     yargs "^16.2.0"
 
 avvio@^7.2.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/avvio/-/avvio-7.2.0.tgz#b4bf4eaf4a0207a4e6a58a7859207250793cc81b"
-  integrity sha512-KtC63UyZARidAoIV8wXutAZnDIbZcXBqLjTAhZOX+mdMZBQCh5il/15MvCvma1178nhTwvN2D0TOAdiKG1MpUA==
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/avvio/-/avvio-7.2.1.tgz#d2323bbebfe308189e5a41386de834ce3fbbd2f8"
+  integrity sha512-b+gox68dqD6c3S3t+bZBKN6rYbVWdwpN12sHQLFTiacDT2rcq7fm07Ww+IKt/AvAkyCIe1f5ArP1bC/vAlx97A==
   dependencies:
     archy "^1.0.0"
     debug "^4.0.0"
