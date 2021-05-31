@@ -4499,10 +4499,10 @@ osenv@^0.1.4, osenv@^0.1.5:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
-ow@^0.22.0:
-  version "0.22.0"
-  resolved "https://registry.yarnpkg.com/ow/-/ow-0.22.0.tgz#d83637055b6aebb40a3bcb51447d2825ecb375bc"
-  integrity sha512-VZpjntwsFxg+oM2pZ0Km8p6+FLAugD86TQWHmz0Ldm/rfSs6qezggArumK+FrBUFAXodWULJrbV5ie0LkhWJdQ==
+ow@^0.23.0:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/ow/-/ow-0.23.0.tgz#2c3b270adad96886b4c916a38458a3586648993e"
+  integrity sha512-aAM7+00uoPXPIE1cmyh/3WJpzu2vihxymGYjpZl/MZ0OsCgVizJbCD4B5gm+/iMHvOmbdDCEIqtvSMqS9DLYcQ==
   dependencies:
     "@sindresorhus/is" "^4.0.0"
     callsites "^3.1.0"
