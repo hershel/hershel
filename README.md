@@ -1,3 +1,10 @@
+# This project is no longer maintained.
+
+Seeing the evolution of Discord's decisions regarding the bot ecosystem, I am no longer interested in contributing to the creation and maintenance of Discord bots.
+[More informations here](https://gist.github.com/Rapptz/4a2f62751b9600a31a0d3c78100287f1)
+
+---
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/hershel/hershel/master/media/hershel.png" />
 </p>
